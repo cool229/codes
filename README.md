@@ -10,3 +10,5 @@ Coding Problems:-
 2. Count All Palindrome Sub-Strings in a String
 3. Next Smallest palindrome
 4. Next Greatest Palindrome
+5. All sorting algorithms
+6. Linear and binary search
