@@ -8,3 +8,4 @@ MY HackerRank certificate
 Coding Problems:-
 1. Morse Problem
 2. Count All Palindrome Sub-Strings in a String
+3. Next Smallest palindrome
