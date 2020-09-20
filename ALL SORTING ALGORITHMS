@@ -1,0 +1,133 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int partition(int arr[], int low, int high){
+    
+    int pivot = arr[high];
+    int i = (low-1);
+    for(int j=low;j<high;j++){
+        if(arr[j]<pivot){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+    swap(arr[i+1], arr[high]);
+    return(i+1);
+}
+void quicksort(int arr[], int i, int j){
+    if(i<j){
+        int q = partition(arr, i, j);
+        quicksort(arr, i, q-1);
+        quicksort(arr, q+1, j);
+    }
+}
+void bubblesort(int arr[], int n){
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            if(arr[i]>arr[j]){
+                swap(arr[i],arr[j]);
+            }
+        }
+    }
+}
+void insertionsort(int arr[], int low, int high){
+    for(int i=low+1;i<high;i++){
+        int temp = arr[i];
+        int j= i-1;
+        while(j>=0&& arr[j]>temp){
+            arr[j+1]= arr[j];
+            j--;
+        }
+        arr[j+1] = temp;
+    }
+}
+void selectionsort(int arr[], int low, int high){
+    int minindex;
+    for(int i=0;i<high;i++){
+        minindex = i;
+        for(int j=i+1;j<high;j++){
+            if(arr[minindex]>arr[j]){
+                minindex = j;
+            }
+        }
+        swap(arr[minindex],arr[i]);
+    }
+    
+}
+void merge(int arr[], int l, int m, int r){
+    int i,j,k;
+    int b[r+l];
+    k = 0;
+    i = l;
+    j = m+1;
+    while(i<=m && j<=r){
+        if(arr[i]< arr[j]){
+            b[k++] = arr[i++];
+        }
+        else{
+            b[k++]= arr[j++];
+        }
+    }
+    while(i<=m){
+        b[k++] =arr[i++];
+    }
+    while(j<=r){
+        b[k++] = arr[j++];
+    }
+    for(i = r;i>=l;i--){
+        arr[i] = b[--k];
+    }
+    
+}
+void mergeSort(int arr[], int l,int r){
+    if(l<r){
+        int m = (l+r)/2;
+        mergeSort(arr, l,m);
+        mergeSort(arr, m+1, r);
+        merge(arr, l, m, r);
+    }
+}
+void heapify(int arr[], int n, int i){
+    int l =2*i+1;
+    int r = 2*i+2;
+    int largest = i;
+    if(l<n && arr[l]>arr[largest])
+        largest = l;
+    if(r<n&&arr[r]>arr[largest])
+        largest = r;
+    if(largest != i){
+        swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
+    }
+        
+}
+void heapSort(int arr[], int n){
+    for(int i=n/2-1;i>=0;i--){
+        heapify(arr,n,i); //building heap;
+    }
+    for(int i=n-1;i>0;i--){
+        swap(arr[0], arr[i]);
+        heapify(arr,i,0);
+    }
+}
+int main()
+{
+   int n;
+   cin>>n;
+   int arr[n];
+   for(int i=0;i<n;i++){
+       cin>>arr[i];
+   }
+   // quicksort(arr, 0, n);
+   // bubblesort(arr,n);
+   // insertionsort(arr, 0, n);
+   // selectionsort(arr, 0, n);
+   //mergeSort(arr, 0, n);
+   heapSort(arr, n);
+   for(int i=0;i<n;i++){
+       cout<<arr[i]<<" ";
+   }
+   cout<<endl;
+   return 0;
+}
