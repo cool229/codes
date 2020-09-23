@@ -12,3 +12,4 @@ Coding Problems:-
 4. Next Greatest Palindrome
 5. All sorting algorithms
 6. Linear and binary search
+7. Find next greater number with same set of digits
