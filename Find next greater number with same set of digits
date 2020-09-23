@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string str1;
+    cin>>str1;
+    int i=0;
+    int n = str1.length();
+    cout<<n<<" "<<endl;
+    for(i = n-1;i>0;i--){
+        if(str1[i] > str1[i-1])
+            break;
+    }
+    if(i == 0){
+        cout<<"Not Possible\n"<<endl;
+    }
+    int temp = str1[i-1], smallest = i;
+    for(int j = i+1;j<n;j++){
+        if(str1[j]>temp && str1[j] < str1[smallest]){
+            smallest = j;
+        }
+    }
+    swap(str1[smallest], str1[i-1]);
+    cout<<i<<"i"<<endl;
+    sort(str1.begin()+i, str1.end());
+    cout<<str1<<endl;
+   return 0;
+}
