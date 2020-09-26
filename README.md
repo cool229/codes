@@ -13,3 +13,6 @@ Coding Problems:-
 5. All sorting algorithms
 6. Linear and binary search
 7. Find next greater number with same set of digits
+
+
+arr = list(map(int, input().split()))
