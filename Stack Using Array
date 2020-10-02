@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+#define MAX 100
+int arr[MAX], i=-1, n;
+int pop(){
+   if(i==-1) {
+       return -1;
+   }
+   else{
+       return arr[i--];
+   }
+}
+int top(){
+    return arr[i];
+}
+void push(int a){
+    arr[++i] = a;
+}
+void print(){
+    cout<<"Displaying the stack"<<"\n";
+    if(i==-1){
+        cout<<"-1"<<endl;
+    }
+    else{
+        for(int j=0;j<=i;j++){
+            cout<<arr[j]<<" ";
+        }
+    }
+    cout<<"\n"<<"End"<<"\n";
+}
+int main()
+{
+   cout<<"Implementing stack using array"<<"\n";
+   cin>>n;
+   push(1);
+   cout<<top()<<endl;
+   push(2);
+   cout<<top()<<endl;
+   push(3);
+   cout<<top()<<endl;
+   push(5);
+   cout<<top()<<endl;
+   pop();
+   cout<<top()<<endl;
+   
+   return 0;
+}
