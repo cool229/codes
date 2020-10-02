@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool paranthesis(string str1){
+    stack<char> s;
+    int n = str1.length();
+    if(n==0){
+        return false;
+    }
+    for(int i=0;i<n;i++){
+        if(str1[i] == '{' or str1[i] == '(' or str1[i] == '['){
+            s.push(str1[i]);
+        }
+        else{
+            char ch = s.top();
+            if(ch == '{' or ch == '(' or ch== '['){
+                if(str1[i] == '}' && ch == '{'){
+                  s.pop();
+            }
+            else if(str1[i] == ')' && ch=='('){
+                s.pop();
+            }
+            else if(str1[i] == ']' && ch == '['){
+                s.pop();
+            }
+            }
+            else{
+                // cout<<s.top();
+                return false;
+            }
+        }
+    }
+    if(s.empty()){
+        return true;
+    }
+    else{
+        // cout<<s.top();
+        return false;
+    }
+}
+int main() {
+	int t;
+	cin>>t;
+    while(t--){
+        string str1;
+        cin>>str1;
+        // cout<<str1<<" ";
+        if(paranthesis(str1)){
+            cout<<"balanced"<<endl;
+        }
+        else{
+            cout<<"not balanced"<<endl;
+        }
+    }
+}
