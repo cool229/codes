@@ -1,0 +1,30 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run 
+from itertools import permutations 
+  
+def allPermutations(str): 
+       
+     # Get all permutations of string 'ABC' 
+     permList = permutations(str) 
+     set1 = set(permList)
+     permList = list(set1)
+     # print all permutations 
+     count1 = 0
+     count2 = 0
+     for perm in list(permList): 
+         count1+=len(perm)
+         count2+=1
+         print (''.join(perm)) 
+     return count1,count2
+        
+
+str1 = "aabb"
+count1=0
+count2=0
+a=0
+b=0
+for i in range(1,len(str1)+1):
+	a,b=allPermutations(str1[:i])
+	count1+=a
+	count2+=b
+print(count1, count2)
