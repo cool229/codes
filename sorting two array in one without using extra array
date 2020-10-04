@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+void mergeSortedArrays(int arr1[],int arr2[],int m,int n)
+{
+    int i,j,k;
+    i=m-1;
+    j=n-1;
+    k=m+n-1;
+    while(i>=0&&j>=0)
+    {
+        if(arr1[i]>arr2[j])
+        arr1[k]=arr1[i--];
+        else
+        arr1[k]=arr2[j--];
+        k--;
+    }
+    while(j>=0)
+    arr1[k--]=arr2[j--];
+}
+int main() {
+	int m, n;
+	cin>>m>>n;
+	int arr1[2*m+1], arr2[n];
+	for(int i=0;i<m;i++){
+	    cin>>arr1[i];
+	}
+	for(int i=0;i<n;i++){
+	    cin>>arr2[i];
+	}
+	mergeSortedArrays(arr1, arr2,m,n);
+	for(int i=0;i<2*m;i++){
+	    cout<<arr1[i]<<" ";
+	}
+	cout<<endl;
+	
+	return 0;
+}
