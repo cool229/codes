@@ -1,0 +1,32 @@
+import math
+def RomanNumber(n):
+    roman = \
+        {
+            1: "I",
+            5: "V",
+            10: "X",
+            50: "L",
+            100: "C",
+            500: "D",
+            1000: "M",
+            5000: "G",
+            10000: "H"
+        }
+    div = 10 ** (len(str(n))-1)
+    res = ""
+    while(n):
+        msd = n//div;
+        if msd <=3:
+            res += (roman[div]*msd)
+        elif msd==4:
+            res+=(roman[div]+roman[div*5])
+        elif 5<=msd<=8:
+            res+=(roman[div*5]+(roman[div]*(msd-5)))
+        elif msd == 9:
+            res+=(roman[div]+roman[div*10])
+        n = n%div
+        div //=10
+        
+    return res;
+
+print(RomanNumber(3549))
