@@ -14,5 +14,7 @@ Coding Problems:-
 6. Linear and binary search
 7. Find next greater number with same set of digits
 
+For swapping two numbers:-
+a += b -= a;
 
 arr = list(map(int, input().split()))
