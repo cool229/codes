@@ -14,5 +14,8 @@ Coding Problems:-
 6. Linear and binary search
 7. Find next greater number with same set of digits
 
+// For running code faster.
+#pragma GCC optimize ("O2")
+
 
 arr = list(map(int, input().split()))
