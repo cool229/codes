@@ -19,3 +19,26 @@ Coding Problems:-
 
 
 arr = list(map(int, input().split()))
+
+
+Finding prime best logic
+
+ int countPrimes(int n) {
+        if(n<=2)
+            return 0;
+        
+        vector<bool> vect(n);
+        fill(vect.begin()+2,vect.end(), true);
+        int count=1;
+        for(int i=2; i*i<n;i++){
+            if(!vect[i]) continue;
+            for(int j = i*i;j<n;j+=i)
+                vect[j]=false;
+        }
+        for(int i=3;i<n;i+=2){
+            if(vect[i])
+                count++;
+        }
+        
+        return count;
+    }
