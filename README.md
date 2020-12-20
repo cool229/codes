@@ -42,3 +42,18 @@ Finding prime best logic
         
         return count;
     }
+
+
+Work of split() in c++
+
+vector<string> str1;
+        string str2="";
+        for(char c : s){
+            if(c == ' '){
+                str1.push_back(str2);
+                str2 = "";
+                continue;
+            }
+            str2+=c;
+        }
+        str1.push_back(str2);
