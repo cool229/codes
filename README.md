@@ -57,3 +57,7 @@ vector<string> str1;
             str2+=c;
         }
         str1.push_back(str2);
+ 
+ 
+ For Finding maximum in c++ for any number of variables.
+ cout<<max({1,2,3,...});
