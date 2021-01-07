@@ -61,3 +61,6 @@ vector<string> str1;
  
  For Finding maximum in c++ for any number of variables.
  cout<<max({1,2,3,...});
+
+
+*For finding*
