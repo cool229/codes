@@ -63,4 +63,8 @@ vector<string> str1;
  cout<<max({1,2,3,...});
 
 
-*For finding*
+# For sorting vector<vector<int>> of size 2,N;
+ sort(a.begin(), a.end(),
+             [](const auto& L, const auto& R) {
+                 return L[1] > R[1];
+             });
