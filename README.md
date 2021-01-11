@@ -68,3 +68,7 @@ vector<string> str1;
              [](const auto& L, const auto& R) {
                  return L[1] > R[1];
              });
+
+# For creating 2d vector
+vector<vector<bool>> arr(n, vector<bool> (m, false));
+of n rows, m columns
