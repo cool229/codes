@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+using namespace std;
+void subarray_k(vector<int> v, int n, int k)
+{
+	int sum = 0;
+	int index;
+	string str = "";
+	vector<pair<int, int> > arr;
+	for (int i = 0; i < n - 1; i++) 
+	{
+		index = i;
+		str = to_string(v[i]);
+		i++;
+		for (int j = 0; j < k - 1; j++) 
+		{
+			string temp = to_string(v[i]);
+			str += temp;
+			if (j != k - 2)
+				i++;
+		}
+		stringstream check(str);
+		int s = 0;
+
+		// Conversion of concatinated string to integer
+		check >> s;
+		arr.push_back(make_pair(s, index));
+		index++;
+	}
+	int u = 0;
+
+	// Sorting of array
+	sort(arr.begin(), arr.end()); 
+	vector<int> v2;
+	for (int i = 0; i < (n / k); i++) {
+		u = 0;
+		int j = arr[i].second;
+		while (u < k) {
+			int a = v[j];
+			v2.push_back(a);
+			u++;
+			j++;
+		}
+	}
+
+	// print
+	for (int i = 0; i < n; i++) 
+	{
+		cout << v2[i] << " ";
+	}
+}
+
+// Driver code
+int main()
+{
+	int n = 6;
+	vector<int> v = { 1, 32, 5, 6, 9, 3 };
+	int k = 2;
+
+	// Function call
+	subarray_k(v, n, k);
+	return 0;
+	// This code is contributed by Siddhant Thapliyal
+}
