@@ -1,0 +1,42 @@
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+string smallString(string s, int n, int k){
+    int arr[n];
+    for(int i = 0;i<n;i++){
+        int diff = s[i] - 'a';
+        if(diff == 0){
+            arr[i] = 0;
+        }
+        else{
+            arr[i] = 26-diff;
+        }
+    }
+    
+    for(int i = 0;i<n;i++){
+        if(arr[i] <= k){
+            s[i] = 'a';
+            k = k-arr[i];
+        }
+    }
+    k = k % 26;
+    s[n-1] = s[n-1] + k;
+    return s;
+}
+int main(){
+    int t=0;
+    cin>>t;
+    while(t--){
+        int n, k;
+        string s;
+        cin>>n>>k;
+        cin>>s;
+        cout<<n<<" "<<k<<endl;
+        cout<<s<<endl;
+        
+           cout<<smallString(s, n, k)<<endl;
+        
+    }
+}
