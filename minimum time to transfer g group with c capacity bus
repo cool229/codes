@@ -1,0 +1,86 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void checkForBusCapacity(vector<int> g, vector<int> &c, int i, int n)
+{
+    for(int k = 0;k<c.size();){
+        //cout<<g[i]<<" bus "<<i<<" bus "<<c[k]<<" bus "<<k<<endl;
+        if(g[i] > c[k]){
+            c.erase(c.begin());
+            //cout<<c.size()<<" dfdasfa"<<endl;
+            k=0;
+        }
+        else{
+            break;
+        }
+    }
+}
+int minimumTime(vector<int> g,vector<int> c, int n, int m){
+    sort(g.begin(), g.end());
+    sort(c.begin(), c.end());
+    checkForBusCapacity(g, c, 0, n);
+    int minTime = 0, i = 0;
+    for(int j=0;j<c.size();j++){
+        //cout<<g[i]<<" "<<i<<" "<<c[j]<<endl;
+        if(g[i] <= c[j]){
+            minTime++;
+            i++;
+        }
+    }
+    for(;i<n;){
+        checkForBusCapacity(g, c, i, n);
+        if(c.size() == 0 && i == n-1){
+            return minTime;
+        } else if(c.size() == 0 && i != n-1){
+            return -1;
+        }
+        //cout<<"\n"<<" hello "<<i<<" fdf "<<endl;
+        for(int j = 0;j<c.size();j++){
+            //cout<<g[i]<<" "<<i<<" "<<c[j]<<endl;
+            if(g[i] <= c[j]){
+                minTime+=2;
+                i++;
+            }
+        }
+    }
+    return minTime;
+
+}
+int main(){
+    int t=0;
+    cin>>t;
+    while(t--){
+        int n, m;
+        cin>>n>>m;
+        vector<int> g, c;
+        int temp;
+        for(int i = 0;i<n;i++){
+            cin>>temp;
+            g.push_back(temp);
+        }
+        for(int i = 0;i<m;i++){
+            cin>>temp;
+            c.push_back(temp);
+        }
+        int largestGroup = *max_element(g.begin(), g.end());
+        int maxCapacity = *max_element(c.begin(), c.end());
+        
+        //cout<<largestGroup<<" "<<maxCapacity<<endl;
+        if((largestGroup - maxCapacity) > 0) {
+            cout<<"-1"<<endl;
+        }
+        else if(n == m){
+            cout<<n<<endl;
+        }
+        else{
+            //cout<<"hi"<<endl;
+            cout<<"\n"<<minimumTime(g, c, n, m)<<endl;
+        }
+    }
+}
+
+input format
+// 1
+// 5 2
+// 2 1 2 6
+// 5 5 6
